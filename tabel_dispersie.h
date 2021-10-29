@@ -1,0 +1,8 @@
+//
+// Created by Tritean Sergiu on 29-Oct-21.
+//
+
+#ifndef LABORATOARE_TABEL_DISPERSIE_H
+#define LABORATOARE_TABEL_DISPERSIE_H
+
+#endif //LABORATOARE_TABEL_DISPERSIE_H
