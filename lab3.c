@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
     if( n != NULL ) {
         printf_s("Nodul cu cheia %d a fost gasit recursiv \n", n->key);
     } else {
-        printf_s("Nodul cu cheia %d nu a fost gasit recursiv \n", n->key);
+        printf_s("Nodul nu a fost gasit recursiv \n");
     }
 
     //gasire minim
