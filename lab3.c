@@ -1,11 +1,10 @@
 //
-// Created by Tritean Sergiu on 30-Oct-21.
+// Created by Tritean Sergiu on 2-Nov-21.
 //
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "bst.c"
-#define DM 1000
 
 void read_node(int *x) {
     printf_s("x = ");
@@ -52,7 +51,7 @@ int main(int argc, char *argv[]) {
     scanf_s("%d", &x);
     n = IT_TREE_SEARCH(r, x);
     if( n != NULL ) {
-        printf_s("Nodul cu cheia %d gasit iterativ \n", n->key);
+        printf_s("Nodul cu cheia %d gasit iterativ \n la adresa %p", n->key, n);
     } else {
         printf_s("Nodul nu a fost gasit iterativ \n");
     }
@@ -60,7 +59,7 @@ int main(int argc, char *argv[]) {
     //cautare nod recursiv
     n = TREE_SEARCH(r, x);
     if( n != NULL ) {
-        printf_s("Nodul cu cheia %d a fost gasit recursiv \n", n->key);
+        printf_s("Nodul cu cheia %d a fost gasit recursiv \n la adresa %p", n->key, n);
     } else {
         printf_s("Nodul nu a fost gasit recursiv \n");
     }

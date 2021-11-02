@@ -27,11 +27,11 @@ t_rb_node* CREATE_NOD(int key) {
 void INORDER_WALK(t_rb_node* root) {
     if( root != NULL ) {
         INORDER_WALK(root->left);
-        printf_s("%d\n", root->key);
+        printf_s("%d", root->key);
         if(root->color == black){
-            printf_s("[b]");
+            printf_s("[b]\n");
         } else {
-            printf_s("[r]");
+            printf_s("[r]\n");
         }
         INORDER_WALK(root->right);
     }
@@ -55,7 +55,7 @@ void RB_INSERT(t_rb_arbore* A, t_rb_node* z) {
         }
     }
     z->parent = y;
-    if( y != NULL ) A->root = z;
+    if( y == NULL ) A->root = z;
     else if( z->key < y->key ) y->left = z;
     else y->right = z;
 
@@ -67,7 +67,7 @@ void RB_INSERT(t_rb_arbore* A, t_rb_node* z) {
 
 void RB_INSERT_FIXUP(t_rb_arbore *A, t_rb_node *z) {
 
-    t_rb_node* y = (t_rb_node*)malloc(sizeof(t_rb_node));
+    t_rb_node* y;
     while( z->parent != NULL && z->parent->color == red) {
         if( z->parent == z->parent->parent->left ) {
             y = z->parent->parent->right;
@@ -92,20 +92,20 @@ void RB_INSERT_FIXUP(t_rb_arbore *A, t_rb_node *z) {
                 z = z->parent->parent;
             } else if( z == z->parent->left) {
                 z = z->parent;
-                LEFT_ROTATE(A, z);
+                RIGHT_ROTATE(A, z);
             }
             z->parent->color = black;
             z->parent->parent->color = red;
-            RIGHT_ROTATE(A, z->parent->parent);
+            LEFT_ROTATE(A, z->parent->parent);
         }
     }
     A->root->color = black;
 }
 
 void LEFT_ROTATE( t_rb_arbore* A, t_rb_node* x) {
-    t_rb_node* y = (t_rb_node*)malloc(sizeof(t_rb_node));
-    y = x->right;
+    t_rb_node* y = x->right;
     x->right = y->left;
+
     if( y->left != NULL ){
         y->left->parent = x;
     }
@@ -122,9 +122,9 @@ void LEFT_ROTATE( t_rb_arbore* A, t_rb_node* x) {
 }
 
 void RIGHT_ROTATE( t_rb_arbore* A, t_rb_node* x) {
-    t_rb_node* y = (t_rb_node*)malloc(sizeof(t_rb_node));
-    y = x->left;
+    t_rb_node* y = x->left;
     x->left = y->right;
+
     if( y->right != NULL ) {
         y->right->parent = x;
     }

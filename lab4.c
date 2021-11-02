@@ -32,6 +32,9 @@ int main(int argc, char *argv[]) {
         read_node(&x);
     }
 
+    printf_s("Adresa pointer left [%p] cu valoarea [%d]\n", r->left, r->left->key);
+    printf_s("Adresa pointer left [%p] cu valoarea [%d]\n", r->right, r->right->key);
+
     printf_s("In-order walk: \n");
     INORDER_WALK(r);
     printf_s("\n");
