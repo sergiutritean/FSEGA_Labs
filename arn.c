@@ -65,10 +65,24 @@ void RB_INSERT(t_rb_arbore* A, t_rb_node* z) {
     RB_INSERT_FIXUP(A, z);
 }
 
+void RB_INSERT_FIXUP_2(t_rb_arbore *A, t_rb_node *z) {
+
+    t_rb_node* y = NULL;
+    while( z != A->root && z->color == red && z->parent->color == red) {
+        if( z->parent == z->parent->parent->left ) {
+
+        }
+    }
+}
+
 void RB_INSERT_FIXUP(t_rb_arbore *A, t_rb_node *z) {
 
-    t_rb_node* y;
+    t_rb_node* y = NULL;
     while( z->parent != NULL && z->parent->color == red) {
+        if( z->parent == NULL || z->parent->parent == NULL) {
+            printf_s("Am ajuns in nod null \n");
+            return;
+        }
         if( z->parent == z->parent->parent->left ) {
             y = z->parent->parent->right;
             if( y != NULL && y->color == red ) {
@@ -76,13 +90,15 @@ void RB_INSERT_FIXUP(t_rb_arbore *A, t_rb_node *z) {
                 y->color = black;
                 z->parent->parent->color = red;
                 z = z->parent->parent;
-            } else if( z == z->parent->right) {
-                z = z->parent;
-                LEFT_ROTATE( A, z);
+            } else {
+                if( z == z->parent->right) {
+                    z = z->parent;
+                    LEFT_ROTATE( A, z);
+                }
+                z->parent->color = black;
+                z->parent->parent->color = red;
+                RIGHT_ROTATE(A, z->parent->parent);
             }
-            z->parent->color = black;
-            z->parent->parent->color = red;
-            RIGHT_ROTATE(A, z->parent->parent);
         } else {
             y = z->parent->parent->left;
             if( y != NULL && y->color == red) {
@@ -90,13 +106,15 @@ void RB_INSERT_FIXUP(t_rb_arbore *A, t_rb_node *z) {
                 y->color = black;
                 z->parent->parent->color = red;
                 z = z->parent->parent;
-            } else if( z == z->parent->left) {
-                z = z->parent;
-                RIGHT_ROTATE(A, z);
+            } else {
+                if (z == z->parent->left) {
+                    z = z->parent;
+                    RIGHT_ROTATE(A, z);
+                }
+                z->parent->color = black;
+                z->parent->parent->color = red;
+                LEFT_ROTATE(A, z->parent->parent);
             }
-            z->parent->color = black;
-            z->parent->parent->color = red;
-            LEFT_ROTATE(A, z->parent->parent);
         }
     }
     A->root->color = black;

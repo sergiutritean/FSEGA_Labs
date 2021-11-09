@@ -48,11 +48,6 @@ void LIST_DELETE(t_lista *lista, t_nod_lista *nod) {
 }
 
 void LIST_INSERT( t_lista *lista, t_nod_lista *nod) {
-    if( nod == NULL ){
-        printf_s("Nodul este null!");
-        return;
-    }
-
     if(lista->head == NULL) {
         lista->head = nod;
         return;
