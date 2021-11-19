@@ -38,10 +38,15 @@ int main(int argc, char *argv[]) {
     printf_s("Introduceti dimensiunea sirului: \n");
     scanf_s("%d", &n);
 
-    GENERATE_RANDOM_ARRAY(a, n);
+    //pentru generare random
+    /*
+    GENERATSE_RANDOM_ARRAY(a, n);
     printf_s("Sir generat random: \n");
     PRINT_ARRAY(a,n);
+    */
 
+    //pentru citire manuala
+    READ_ARRAY(a, n);
     printf_s("Alegeti metoda de sortare: \n1. Merge sort \n2. Insertion sort\n");
     scanf_s("%d", &option);
 
