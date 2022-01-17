@@ -8,6 +8,9 @@
 #define DM 1000
 #include "quicksort.c"
 #include "heapsort.c"
+#include "merge_sort.c"
+#include "insertion_sort.c"
+
 #define RANDMAX 5000
 
 void GENERATE_RANDOM_ARRAY(int *v, int n) {
@@ -38,23 +41,36 @@ int main(int argc, char *argv[]) {
     printf_s("Introduceti dimensiunea sirului: \n");
     scanf_s("%d", &n);
 
-    GENERATE_RANDOM_ARRAY(a, n);
-    printf_s("Sir generat random: \n");
+    READ_ARRAY(a, n);
+    printf_s("Sir initial: ");
     PRINT_ARRAY(a,n);
 
-    /* Daca se aleg optiuni
-    printf_s("Alegeti metoda de sortare: \n1. Quick Sort \n2. Heap Sort\n");
+    printf_s("Introduceti metoda de sortare:\n");
+    printf_s("1 - Quick Sort\n");
+    printf_s("2 - Heap Sort\n");
+    printf_s("3 - Merge Sort \n");
+    printf_s("4 - Insertion Sort");
+
     scanf_s("%d", &option);
 
-    option == 1 ? QUICK_SORT(a, 0, n-1): HEAP_SORT(a, n, &HEAP_SIZE);
-    */
+    switch(option) {
+        case 1:
+            QUICK_SORT(a, 0, n-1);
+            break;
+        case 2:
+            HEAP_SORT(a, n, &HEAP_SIZE);
+            break;
+        case 3:
+            MERGE_SORT(a, 0, n-1);
+            break;
+        case 4:
+            INSERTION_SORT(a, n);
+            break;
+        default:
+            printf_s("Nu ati introdus o optiune valida");
+    }
 
-    printf_s("Quick sort: \n");
-    QUICK_SORT(a, 0, n-1);
     PRINT_ARRAY(a, n);
 
-    printf_s("Heap sort: \n");
-    HEAP_SORT(a, n, &HEAP_SIZE);
-    PRINT_ARRAY(a, n);
     return EXIT_SUCCESS;
 }
