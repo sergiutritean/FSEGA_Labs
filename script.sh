@@ -47,7 +47,7 @@ function create_nginx_virtual_host() {
     name="${1}"; shift
     
     local name_full
-    name_full = "${2}"; shift
+    name_full = "${1}"; shift
 
     # create www root
     sudo mkdir "/var/www/${name}"
